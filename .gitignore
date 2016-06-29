@@ -25,3 +25,5 @@
 /db/*.sql
 /db/*.dmp
 /db/sqlite3-to-mysql/
+
+/hk/*
