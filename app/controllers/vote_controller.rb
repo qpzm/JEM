@@ -4,10 +4,16 @@ class VoteController < ApplicationController
 
   def final
     @total_poll = 10 * (User.count-1)
-    User.each do |u|
-      u.cards.each do |c|
-      u.coin += c.team.poll/total_poll
-    	Card.destroy(c.id)
+    # User.each do |u|
+    #   u.cards.each do |c|
+    #   u.coin += c.team.poll/total_poll
+    # 	Card.destroy(c.id)
+    #   end
+    # end
+    for v in 2..41
+      User.find(v).cards.each do |p|
+        User.find(v).coin += p.team.poll * 1000 / @total_poll
+        Card.destroy(p.id)
       end
     end
   end
@@ -31,14 +37,14 @@ class VoteController < ApplicationController
         return
       end
     end
-    
+
     unless current_user.vote.nil?
       if current_user.vote.is_complete
         redirect_to :back
         return
-      end 
+      end
     end
-    
+
     new_vote=Vote.new
     new_vote.user_id = current_user.id
     new_vote.team_1_id = params[:vote1]
@@ -46,16 +52,16 @@ class VoteController < ApplicationController
     new_vote.team_3_id = params[:vote3]
     new_vote.is_complete = true
     new_vote.save
-    
+
     # current_user.vote.team_1_id = params[:t_id]
     # current_user.vote.save
     for i in 1..3 do
-      t = Team.find(params["vote".concat(i.to_s).to_sym].to_i) 
+      t = Team.find(params["vote".concat(i.to_s).to_sym].to_i)
       fst = t.first_votes.to_a.count
       snd = t.second_votes.to_a.count
       trd = t.third_votes.to_a.count
       Team.update(t.id, poll: fst*5 + snd*3 + trd*2)
-    end  
+    end
     redirect_to "/vote/result"
   end
 end
