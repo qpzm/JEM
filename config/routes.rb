@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'vote/index'
+  get 'vote/result'
+
   get 'mypage/index'
 
   root 'home#index'
@@ -7,6 +10,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/test'
   get 'team/buysell'
+
 
   devise_for :users, controllers: {
     sessions: 'users/sessions'

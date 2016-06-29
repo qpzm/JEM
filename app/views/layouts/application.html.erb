@@ -52,6 +52,9 @@
                     <li class="nav-item">
                     <a class="nav-link <% if params[:controller] == 'mypage' %>active<% end %>" href="/mypage/index">My Page</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link <% if params[:controller] == 'vote' %>active<% end %>" href="/vote/index">투표하러 가기!</a>
+                    </li>
                     <li class="nav-item right">
                     <% if current_user.name.nil?%>
                       <a class="nav-link nav_name"> NAME? </a>

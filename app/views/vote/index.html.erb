@@ -1,0 +1,44 @@
+<div class="container">
+  <!--Page heading-->
+   <div class="row">
+       <div class="col-md-12" style="margin-top:20px;">
+           <h2 class="h1-responsive" style="text-align:center;">
+             <strong>이 서비스들이 세상에 나온다면..<br> 사람들이 가장 유용하게 사용하는 서비스는 무엇이 될까요?<br></strong>
+               <small class="text-muted" style="text-align:center;">당신의 선택이 중요합니다!</small>
+           </h2>
+       </div>
+   </div>
+   <!--/.Page heading-->
+   <hr>
+
+    <div class="row" style="text-align:center;">
+       <% Teamlist.get_list.each do |t| %>
+           <!--First column-->
+           <div class="col-md-4">
+               <!--Card-->
+               <div class="card">
+                   <!--Card image-->
+                   <div class="view overlay hm-white-slight">
+                       <img src="http://mdbootstrap.com/images/regular/nature/img%20(10).jpg" class="img-fluid" alt="">
+                       <a href="#!">
+                           <div class="mask"></div>
+                       </a>
+                   </div>
+                   <!--/.Card image-->
+                   <!--Card content-->
+                   <div class="card-block">
+                       <!--Title-->
+                       <h4 class="card-title"><%= t.name %></h4>
+                       <!--Text-->
+                       <p class="card-text"><%= t.name %>의 문제를 해결하겠습니다!</p><hr>
+                       <div class="read-more">
+                           <a href="/team/buysell" class="btn btn-primary" id="<% t.id %>">'<%= t.name %>'팀에게 투표하기!</a>
+                       </div>
+                   </div>
+                   <!--/.Card content-->
+               </div>
+               <!--/.Card-->
+           </div>
+           <!--/.First column-->
+        <% end %>
+    </div>

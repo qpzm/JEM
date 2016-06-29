@@ -13,5 +13,5 @@ class User < ActiveRecord::Base
   has_many :sell_orders, class_name: :Order, foreign_key: :seller_id
   has_many :buy_orders, class_name: :Order, foreign_key: :buyer_id
 
-  has_one :votes
+  has_one :vote
 end
