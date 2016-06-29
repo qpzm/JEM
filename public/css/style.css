@@ -51,27 +51,34 @@ footer.page-footer {
 }
 
 .carousel-item:nth-child(1) {
-    background-image: url("/assets/mainimg.jpg");
+    max-height: 100%;
+    background-image: url("/assets/rule_1page.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 .carousel-item:nth-child(2) {
-    background-image: url("/assets/mainimg.jpg");
+        max-width: 100%;
+    max-height: 100%;
+    background-image: url("/assets/rule_2page.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 .carousel-item:nth-child(3) {
-    background-image: url("/assets/mainimg.jpg");
+        max-width: 100%;
+    max-height: 100%;
+    background-image: url("/assets/rule_3page.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 .carousel-item:nth-child(4) {
-    background-image: url("/assets/mainimg.jpg");
+        max-width: 100%;
+    max-height: 100%;
+    background-image: url("/assets/rule_4page.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 
