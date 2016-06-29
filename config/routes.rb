@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'admin/index', as: :admin
+  post 'team/buy'
+  post 'team/sell'
 
   get 'team/index'
   get 'home/index'
