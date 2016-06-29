@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   get 'vote/index'
   get 'vote/result'
-  get 'vote/result/:t_id' => 'vote#result#:t_id'
-  get 'vote/secondvotecheck/:t_id'=> 'vote#secondvote#:t_id'
-  get 'vote/thirdvotecheck/:t_id'=> 'vote#thirdvote#:t_id'
+  get 'vote/result/:t_id' => 'vote#result'
+  get 'vote/secondvotecheck/:t_id'=> 'vote#secondvote'
+  get 'vote/thirdvotecheck/:t_id'=> 'vote#thirdvote'
   get 'vote/secondvote'
   get 'vote/thirdvote'
 
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'team/index'
   get 'home/index'
   get 'home/test'
-  get 'team/buysell'
+  get 'team/buysell/:t_id' => 'team#buysell', as: :buysell
 
 
   devise_for :users, controllers: {
