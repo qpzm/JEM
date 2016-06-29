@@ -4,5 +4,5 @@ class Teamlist
   end
 
   private
-  @team_list = Team.order('id desc')
+  @team_list = Team.order('id asc')
 end
