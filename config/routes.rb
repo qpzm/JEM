@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   get 'vote/result/:t_id' => 'vote#result'
   get 'vote/firstvotecheck/:t_id' => 'vote#firstvotecheck'
 
-
   get 'mypage/index'
 
   root 'home#index'
   get 'admin/index', as: :admin
+  post 'team/buy'
+  post 'team/sell'
 
   get 'team/index'
   get 'home/index'
