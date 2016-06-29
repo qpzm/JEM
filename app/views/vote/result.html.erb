@@ -1,0 +1,43 @@
+<div class="container">
+  <!--Page heading-->
+   <div class="row">
+       <div class="col-md-12" style="margin-top:20px;">
+           <h2 class="h1-responsive" style="text-align:center;">
+             <strong>득표 결과를 공개하겠습니다!</strong><br>
+               <small class="text-muted" style="text-align:center;">두구두구두구..</small><br>
+               <button class="btn btn-lg btn-success" style="text-align:center;" data-toggle="collapse" data-target="#voteresult"><b>결과보러가기!</b></button>
+           </h2>
+       </div>
+   </div><hr>
+     <!--/.Page heading-->
+    <div class="row">
+     <div class="col-md-12" style="margin-top:20px;">
+      <table class="table collapse" id="voteresult">
+        <thead class="thead-inverse" style="text-align:center;">
+          <tr>
+            <th>팀 번호</th>
+            <th>주제</th>
+            <th>득표수</th>
+            <th>득표율</th>
+            <th>배당금(카드 1개당)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @teams.each do |t| %>
+          <tr>
+            <th scope="row"><%= t.id %></th>
+            <td><%= t.name %>
+            <td><%= t.poll %></td>
+            <td><%= t.poll / 4 %>%</td>
+            <td><%= t.poll * 2.5 %>원</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <hr>
+      <form action="/vote/final">
+        <button class="btn btn-lg btn-primary" style="text-align:center;" id="voteresult">JEM 시장의 막이 내렸습니다!</button>
+      </form>
+    </div>
+  </div>
+</div>

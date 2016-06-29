@@ -4,6 +4,7 @@ class CreateTeams < ActiveRecord::Migration
       t.string :name, null: false, default: ""
       t.string :information, null: false, default: ""
       t.integer :poll, null: false, default: 0
+      t.string :image_url, null: false, default: ""
 
       t.timestamps null: false
     end

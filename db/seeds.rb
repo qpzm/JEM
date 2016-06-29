@@ -7,16 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # team
-Team.create(name: "금융")
-Team.create(name: "컨텐츠")
-Team.create(name: "환경")
-Team.create(name: "사회공헌")
-Team.create(name: "교육")
-Team.create(name: "건강")
-Team.create(name: "라이프스타일")
-Team.create(name: "1인 미디어")
-Team.create(name: "융합")
-Team.create(name: "정보")
+Team.create(name: "금융", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "컨텐츠", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "환경", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "사회공헌", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "교육", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "건강", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "라이프스타일", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "1인 미디어", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "융합", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "정보", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
 
 # user
 User.create(email: "hwshan@snu.ac.kr", univ: "SNU", name: "한원섭", major: "기계항공공학부", password: "12341234", password_confirmation: "12341234", team_id: 3)
@@ -76,18 +76,21 @@ end
 end
 
 # order
-unsorted = (1..10).to_a.sample(10)
-unsorted_2 = (1..10).to_a.sample(10).map{|x| x*18}
-1.upto(10) do |i|
-  seller_and_buyer = (1..40).to_a.sample(2)
+unsorted = (1..100).to_a.sample(100)
+unsorted_2 = (1..10).to_a.sample(10).map{|x| x*18} # 18은 100/5.5 가 18.1818이라서 그럼.
+1.upto(100) do |i|
+  seller_and_buyer = (1..40).to_a.sample(2) # [seller_id, buyer_id]
   is_complete = [true, false].sample(1)
-  if is_complete[0] # true 면 끝난 거래
-    Order.create(seller_id: seller_and_buyer.first, buyer_id: seller_and_buyer.last, card_id: unsorted[i-1], price: unsorted_2[i-1], is_sell: true)
+  if is_complete[0] # true 면 끝난 거래이고, seed 데이터라서 임시로 전부 is_sell: true
+    o = Order.create(seller_id: seller_and_buyer.first, buyer_id: seller_and_buyer.last, card_id: unsorted[i-1], price: unsorted_2[(i-1)%10], is_sell: true, is_complete: true)
+    Card.update(o.card_id, user_id: seller_and_buyer.first)
   else
     if [true, false].sample(1) # true 면 sell
-      Order.create(seller_id: seller_and_buyer.first, buyer_id: nil, card_id: unsorted[i-1], price: unsorted_2[i-1])
+      o = Order.create(seller_id: seller_and_buyer.first, buyer_id: nil, card_id: unsorted[i-1], price: unsorted_2[(i-1)%10], is_sell: true)
+      Card.update(o.card_id, on_market: true)
     else
-      Order.create(seller_id: nil, buyer_id: seller_and_buyer.last, card_id: unsorted[i-1], price: unsorted_2[i-1])
+      o = Order.create(seller_id: nil, buyer_id: seller_and_buyer.last, card_id: unsorted[i-1], price: unsorted_2[(i-1)%10])
+      Card.update(o.card_id, on_market: true)
     end
   end
 end
