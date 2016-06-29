@@ -4,10 +4,16 @@ class VoteController < ApplicationController
 
   def final
     @total_poll = 10 * (User.count-1)
-    User.each do |u|
-      u.cards.each do |c|
-      u.coin += c.team.poll/total_poll
-    	Card.destroy(c.id)
+    # User.each do |u|
+    #   u.cards.each do |c|
+    #   u.coin += c.team.poll/total_poll
+    # 	Card.destroy(c.id)
+    #   end
+    # end
+    for v in 2..41
+      User.find(v).cards.each do |p|
+        User.find(v).coin += p.team.poll * 1000 / @total_poll
+        Card.destroy(p.id)
       end
     end
   end
