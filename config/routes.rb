@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   get 'vote/index'
+  get 'vote/final'
   get 'vote/result'
   get 'vote/result/:t_id' => 'vote#result#:t_id'
-  get 'vote/secondvotecheck/:t_id'=> 'vote#secondvote#:t_id'
-  get 'vote/thirdvotecheck/:t_id'=> 'vote#thirdvote#:t_id'
-  get 'vote/secondvote'
-  get 'vote/thirdvote'
+  get 'vote/firstvotecheck/:t_id' => 'vote#firstvotecheck#t_id'
 
   get 'mypage/index'
 
