@@ -51,7 +51,7 @@ footer.page-footer {
 }
 
 .carousel-item:nth-child(1) {
-    background-image: url("/images/mainimg.jpg");
+    background-image: url("/assets/mainimg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
