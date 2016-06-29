@@ -25,9 +25,3 @@
 /db/*.sql
 /db/*.dmp
 /db/sqlite3-to-mysql/
-
-# Ignore config/database.yml and backup_database.yml
-/config/database.yml
-/config/backup_database.yml
-/config/database.yml.sqlite3
-/config/secrets.yml
