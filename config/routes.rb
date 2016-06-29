@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root 'home#index'
+
+  get 'team/index'
+  get 'home/index'
+  get 'team/buysell'
+
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
