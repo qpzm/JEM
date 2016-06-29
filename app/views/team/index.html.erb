@@ -8,399 +8,66 @@
       </h2>
     </div>
   </div>
-  <!--/.Page heading-->
   <hr>
 
-  <!--First row-->
-  <div class="row" style="text-align:center;">
-    <!--First column-->
-    <div class="col-md-4">
-      <!--Card-->
-      <div class="card">
-        <!--Card image-->
-        <div class="view overlay hm-white-slight">
-          <img src="http://mdbootstrap.com/images/regular/nature/img%20(10).jpg" class="img-fluid" alt="">
-          <a href="<%= buysell_path(1) %>">
-            <div class="mask"></div>
-          </a>
-        </div>
-        <!--/.Card image-->
-        <!--Card content-->
-        <div class="card-block">
-          <!--Title-->
-          <h4 class="card-title">금융</h4>
-          <!--Text-->
-          <p class="card-text">금융의 문제를 해결하겠습니다.</p><hr>
-          <p class="card-text">'금융' 팀의 현재 상황
-          <%# if previous_price<=previousbefore_price %>
-          (<%#= aa%><i class="fa fa-arrow-up" aria-hidden="true" style="color:blue;"></i>)
-          <%# else %>
-          <%#i class="fa fa-arrow-up" aria-hidden="true"></i>)
-        <%# end %>
-        : 주가 = <%#= aa %> 원</p>
-        <div class="read-more">
-          <a href="<%= buysell_path(1) %>" class="btn btn-primary">'금융'팀을 Buy/Sell하러가기!</a>
-        </div>
-      </div>
-      <!--/.Card content-->
+  <% 0.upto(3) do |i| %>
+    <div class="row" style="text-align:center;">
+      <% 0.upto(2) do |j| %>
+        <% if !@teams.to_a[i*3 + j].nil? %>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="view overlay hm-white-slight">
+                <img src="http://mdbootstrap.com/images/regular/nature/img%20(10).jpg" class="img-fluid" alt="">
+                <a href="<%= buysell_path(i*3 + j + 1) %>">
+                  <div class="mask"></div>
+                </a>
+              </div>
+              <div class="card-block">
+                <h4 class="card-title"><%= @teams.to_a[i*3 + j].name %></h4>
+                <p class="card-text"><%= @teams.to_a[i*3 + j].information %></p><hr>
+                <p class="card-text"><%= @teams.to_a[i*3 + j].name %> 팀의 현재 상황
+                <%# if previous_price<=previousbefore_price %>
+                  (<%#= aa%><i class="fa fa-arrow-up" aria-hidden="true" style="color:blue;"></i>)
+                <%# else %>
+                  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                <%# end %>
+                : 주가 = <%#= aa %> 원</p>
+                <div class="read-more">
+                  <a href="<%= buysell_path(i*3 + j + 1) %>" class="btn btn-primary"><%= @teams.to_a[i*3 + j].name %>팀을 Buy/Sell하러가기!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="col-md-4">
+          </div>
+        <% end %>
+      <% end %>
     </div>
-    <!--/.Card-->
-  </div>
-  <!--/.First column-->
+  <% end %>
 
-  <!--Second column-->
-  <div class="col-md-4">
-    <!--Card-->
-    <div class="card">
-      <!--Card image-->
-      <div class="view overlay hm-white-slight">
-        <img src="http://mdbootstrap.com/images/regular/people/img%20(2).jpg" class="img-fluid" alt="">
-        <a href="#!">
-          <div class="mask"></div>
-        </a>
-      </div>
-      <!--/.Card image-->
-      <!--Card content-->
-      <div class="card-block">
-        <!--Title-->
-        <h4 class="card-title">환경</h4>
-        <!--Text-->
-        <p class="card-text">환경의 문제를 해결하겠습니다.</p><hr>
-        <p class="card-text">'환경' 팀의 현재 상황
-        <%# if previous_price<=previousbefore_price %>
-        (<%#= aa%><i class="fa fa-arrow-down" aria-hidden="true" style="color:red;"></i>)
-        <%# else %>
-        <%#i class="fa fa-arrow-up" aria-hidden="true"></i>)
-      <%# end %>
-      : 주가 = <%#= aa %> 원</p>
-      <div class="read-more">
-        <a href="#!" class="btn btn-primary">'환경'팀을 Buy/Sell하러가기!</a>
-      </div>
-    </div>
-    <!--/.Card content-->
-  </div>
-  <!--/.Card-->
-</div>
-<!--/.Second column-->
-
-<!--Third column-->
-<div class="col-md-4">
-  <!--Card-->
-  <div class="card">
-    <!--Card image-->
-    <div class="view overlay hm-white-slight">
-      <img src="http://mdbootstrap.com/images/regular/nature/img%20(18).jpg" class="img-fluid" alt="">
-      <a href="#!">
-        <div class="mask"></div>
+  <nav class="row text-xs-center">
+    <ul class="pagination">
+      <li class="page-item disabled">
+      <a class="page-link" href="#!" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
       </a>
-    </div>
-    <!--/.Card image-->
-    <!--Card content-->
-    <div class="card-block">
-      <!--Title-->
-      <h4 class="card-title">정보</h4>
-      <!--Text-->
-      <p class="card-text">정보의 문제를 해결하겠습니다.</p><hr>
-      <p class="card-text">'정보' 팀의 현재 상황
-      <%# if previous_price<=previousbefore_price %>
-      (<%#= aa%><i class="fa fa-arrow-up" aria-hidden="true" style="color:blue;"></i>)
-      <%# else %>
-      <%#i class="fa fa-arrow-up" aria-hidden="true"></i>)
-    <%# end %>
-    : 주가 = <%#= aa %> 원</p>
-    <div class="read-more">
-      <a href="#!" class="btn btn-primary">'정보'팀을 Buy/Sell하러가기!</a>
-    </div>
-  </div>
-  <!--/.Card content-->
+      </li>
+      <li class="page-item active">
+      <a class="page-link" href="#!">1 <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#!">2</a></li>
+      <li class="page-item"><a class="page-link" href="#!">3</a></li>
+      <li class="page-item"><a class="page-link" href="#!">4</a></li>
+      <li class="page-item"><a class="page-link" href="#!">5</a></li>
+      <li class="page-item">
+      <a class="page-link" href="#!" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+      </li>
+    </ul>
+  </nav>
+  <hr>
 </div>
-<!--/.Card-->
-               </div>
-               <!--/.Third column-->
-             </div>
-             <!--/.First row-->
-
-             <!--Second row-->
-             <div class="row" style="text-align:center;">
-               <!--First column-->
-               <div class="col-md-4">
-                 <!--Card-->
-                 <div class="card">
-                   <!--Card image-->
-                   <div class="view overlay hm-white-slight">
-                     <img src="http://mdbootstrap.com/images/regular/people/img%20(6).jpg" class="img-fluid" alt="">
-                     <a href="#!">
-                       <div class="mask"></div>
-                     </a>
-                   </div>
-                   <!--/.Card image-->
-                   <!--Card content-->
-                   <div class="card-block">
-                     <!--Title-->
-                     <h4 class="card-title">라이프스타일</h4>
-                     <!--Text-->
-                     <p class="card-text">라이프스타일의 문제를 해결하겠습니다.</p><hr>
-                     <p class="card-text">'라이프스타일' 팀의 현재 상황
-                     <%# if previous_price<=previousbefore_price %>
-                     (<%#= aa%><i class="fa fa-arrow-down" aria-hidden="true" style="color:red;"></i>)
-                     <%# else %>
-                     <%#i class="fa fa-arrow-up" aria-hidden="true"></i>)
-                   <%# end %>
-                   : 주가 = <%#= aa %> 원</p>
-                   <div class="read-more">
-                     <a href="#!" class="btn btn-primary">'라이프스타일'팀을 Buy/Sell하러가기!</a>
-                   </div>
-                 </div>
-                 <!--/.Card content-->
-               </div>
-               <!--/.Card-->
-             </div>
-             <!--/.First column-->
-
-             <!--Second column-->
-             <div class="col-md-4">
-               <!--Card-->
-               <div class="card">
-                 <!--Card image-->
-                 <div class="view overlay hm-white-slight">
-                   <img src="http://mdbootstrap.com/images/regular/nature/img%20(14).jpg" class="img-fluid" alt="">
-                   <a href="#!">
-                     <div class="mask"></div>
-                   </a>
-                 </div>
-                 <!--/.Card image-->
-                 <!--Card content-->
-                 <div class="card-block">
-                   <!--Title-->
-                   <h4 class="card-title">금융</h4>
-                   <!--Text-->
-                   <p class="card-text">금융의 문제를 해결하겠습니다.</p><hr>
-                   <p class="card-text">'금융' 팀의 현재 상황
-                   <%# if previous_price<=previousbefore_price %>
-                   (<%#= aa%><i class="fa fa-arrow-up" aria-hidden="true" style="color:blue;"></i>)
-                   <%# else %>
-                   <%#i class="fa fa-arrow-up" aria-hidden="true"></i>)
-                 <%# end %>
-                 : 주가 = <%#= aa %> 원</p>
-                 <div class="read-more">
-                   <a href="#!" class="btn btn-primary">'금융'팀을 Buy/Sell하러가기!</a>
-                 </div>
-               </div>
-               <!--/.Card content-->
-             </div>
-             <!--/.Card-->
-           </div>
-           <!--Second column-->
-
-           <!--Third column-->
-           <div class="col-md-4">
-             <!--Card-->
-             <div class="card">
-               <!--Card image-->
-               <div class="view overlay hm-white-slight">
-                 <img src="http://mdbootstrap.com/images/regular/people/img%20(11).jpg" class="img-fluid" alt="">
-                 <a href="#!">
-                   <div class="mask"></div>
-                 </a>
-               </div>
-               <!--/.Card image-->
-               <!--Card content-->
-               <div class="card-block">
-                 <!--Title-->
-                 <h4 class="card-title">건강</h4>
-                 <!--Text-->
-                 <p class="card-text">건강의 문제를 해결하겠습니다.</p><hr>
-                 <p class="card-text">'건강' 팀의 현재 상황
-                 <%# if previous_price<=previousbefore_price %>
-                 (<%#= aa%><i class="fa fa-arrow-up" aria-hidden="true" style="color:blue;"></i>)
-                 <%# else %>
-                 <%#i class="fa fa-arrow-up" aria-hidden="true"></i>)
-               <%# end %>
-               : 주가 = <%#= aa %> 원</p>
-               <div class="read-more">
-                 <a href="#!" class="btn btn-primary">'건강'팀을 Buy/Sell하러가기!</a>
-               </div>
-             </div>
-             <!--/.Card content-->
-           </div>
-           <!--/.Card-->
-         </div>
-         <!--/.Third column-->
-       </div>
-       <!--/.Second row-->
-
-       <!--Third row-->
-       <div class="row" style="text-align:center;">
-         <!--First column-->
-         <div class="col-md-4">
-           <!--Card-->
-           <div class="card">
-             <!--Card image-->
-             <div class="view overlay hm-white-slight">
-               <img src="http://mdbootstrap.com/images/regular/nature/img%20(10).jpg" class="img-fluid" alt="">
-               <a href="#!">
-                 <div class="mask"></div>
-               </a>
-             </div>
-             <!--/.Card image-->
-             <!--Card content-->
-             <div class="card-block">
-               <!--Title-->
-               <h4 class="card-title">융합</h4>
-               <!--Text-->
-               <p class="card-text">융합의 문제를 해결하겠습니다.</p><hr>
-               <p class="card-text">'융합' 팀의 현재 상황
-               <%# if previous_price<=previousbefore_price %>
-               (<%#= aa%><i class="fa fa-arrow-down" aria-hidden="true" style="color:red;"></i>)
-               <%# else %>
-               <%#i class="fa fa-arrow-up" aria-hidden="true"></i>)
-             <%# end %>
-             : 주가 = <%#= aa %> 원</p>
-             <div class="read-more">
-               <a href="#!" class="btn btn-primary">'융합'팀을 Buy/Sell하러가기!</a>
-             </div>
-           </div>
-           <!--/.Card content-->
-         </div>
-         <!--/.Card-->
-       </div>
-       <!--/.First column-->
-
-       <!--Second column-->
-       <div class="col-md-4">
-         <!--Card-->
-         <div class="card">
-           <!--Card image-->
-           <div class="view overlay hm-white-slight">
-             <img src="http://mdbootstrap.com/images/regular/people/img%20(2).jpg" class="img-fluid" alt="">
-             <a href="#!">
-               <div class="mask"></div>
-             </a>
-           </div>
-           <!--/.Card image-->
-           <!--Card content-->
-           <div class="card-block">
-             <!--Title-->
-             <h4 class="card-title">1인미디어</h4>
-             <!--Text-->
-             <p class="card-text">1인미디어의 문제를 해결하겠습니다.</p><hr>
-             <p class="card-text">'1인미디어' 팀의 현재 상황
-             <%# if previous_price<=previousbefore_price %>
-             (<%#= aa%><i class="fa fa-arrow-up" aria-hidden="true" style="color:blue;"></i>)
-             <%# else %>
-             <%#i class="fa fa-arrow-up" aria-hidden="true"></i>)
-           <%# end %>
-           : 주가 = <%#= aa %> 원</p>
-           <div class="read-more">
-             <a href="#!" class="btn btn-primary">'1인미디어'팀을 Buy/Sell하러가기!</a>
-           </div>
-         </div>
-         <!--/.Card content-->
-       </div>
-       <!--/.Card-->
-     </div>
-     <!--/.Second column-->
-
-     <!--Third column-->
-     <div class="col-md-4">
-       <!--Card-->
-       <div class="card">
-         <!--Card image-->
-         <div class="view overlay hm-white-slight">
-           <img src="http://mdbootstrap.com/images/regular/nature/img%20(18).jpg" class="img-fluid" alt="">
-           <a href="#!">
-             <div class="mask"></div>
-           </a>
-         </div>
-         <!--/.Card image-->
-         <!--Card content-->
-         <div class="card-block">
-           <!--Title-->
-           <h4 class="card-title">사회공헌</h4>
-           <!--Text-->
-           <p class="card-text">사회공헌의 문제를 해결하겠습니다.</p><hr>
-           <p class="card-text">'사회공헌' 팀의 현재 상황
-           <%# if previous_price<=previousbefore_price %>
-           (<%#= aa%><i class="fa fa-arrow-up" aria-hidden="true" style="color:blue;"></i>)
-           <%# else %>
-           <%#i class="fa fa-arrow-up" aria-hidden="true"></i>)
-         <%# end %>
-         : 주가 = <%#= aa %> 원</p>
-         <div class="read-more">
-           <a href="#!" class="btn btn-primary">'사회공헌'팀을 Buy/Sell하러가기!</a>
-         </div>
-       </div>
-       <!--/.Card content-->
-     </div>
-     <!--/.Card-->
-   </div>
-   <!--/.Third column-->
- </div>
- <!--/.Third row-->
-
- <!--Forth row-->
- <div class="row" style="text-align:center;">
-   <!--First column-->
-   <div class="col-md-4">
-     <!--Card-->
-     <div class="card">
-       <!--Card image-->
-       <div class="view overlay hm-white-slight">
-         <img src="http://mdbootstrap.com/images/regular/nature/img%20(10).jpg" class="img-fluid" alt="">
-         <a href="#!">
-           <div class="mask"></div>
-         </a>
-       </div>
-       <!--/.Card image-->
-       <!--Card content-->
-       <div class="card-block">
-         <!--Title-->
-         <h4 class="card-title">컨텐츠</h4>
-         <!--Text-->
-         <p class="card-text">컨텐츠의 문제를 해결하겠습니다.</p><hr>
-         <p class="card-text">'컨텐츠' 팀의 현재 상황
-         <%# if previous_price<=previousbefore_price %>
-         (<%#= aa%><i class="fa fa-arrow-down" aria-hidden="true" style="color:red;"></i>)
-         <%# else %>
-         <%#i class="fa fa-arrow-up" aria-hidden="true"></i>)
-       <%# end %>
-       : 주가 = <%#= aa %> 원</p>
-       <div class="read-more">
-         <a href="#!" class="btn btn-primary">'컨텐츠'팀을 Buy/Sell하러가기!</a>
-       </div>
-     </div>
-     <!--/.Card content-->
-   </div>
-   <!--/.Card-->
- </div>
- <!--/.First column-->
-             </div>
-             <!--/.Forth row-->
-
-             <!--Pagination-->
-             <nav class="row text-xs-center">
-             <ul class="pagination">
-               <li class="page-item disabled">
-               <a class="page-link" href="#!" aria-label="Previous">
-                 <span aria-hidden="true">&laquo;</span>
-                 <span class="sr-only">Previous</span>
-               </a>
-               </li>
-               <li class="page-item active">
-               <a class="page-link" href="#!">1 <span class="sr-only">(current)</span></a>
-               </li>
-               <li class="page-item"><a class="page-link" href="#!">2</a></li>
-               <li class="page-item"><a class="page-link" href="#!">3</a></li>
-               <li class="page-item"><a class="page-link" href="#!">4</a></li>
-               <li class="page-item"><a class="page-link" href="#!">5</a></li>
-               <li class="page-item">
-               <a class="page-link" href="#!" aria-label="Next">
-                 <span aria-hidden="true">&raquo;</span>
-                 <span class="sr-only">Next</span>
-               </a>
-               </li>
-             </ul>
-             </nav>
-             <!--/.Pagination-->
-             <hr>
-           </div>

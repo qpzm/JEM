@@ -1,0 +1,24 @@
+<div class="col-md-4">
+  <div class="card">
+    <div class="view overlay hm-white-slight">
+      <img src="http://mdbootstrap.com/images/regular/nature/img%20(10).jpg" class="img-fluid" alt="">
+      <a href="<%= buysell_path(t.id) %>">
+        <div class="mask"></div>
+      </a>
+    </div>
+    <div class="card-block">
+      <h4 class="card-title"><%= t.name %></h4>
+      <p class="card-text"><%= t.information %></p><hr>
+      <p class="card-text"><%= t.name %> 팀의 현재 상황
+      <%# if previous_price<=previousbefore_price %>
+        (<%#= aa%><i class="fa fa-arrow-up" aria-hidden="true" style="color:blue;"></i>)
+      <%# else %>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+      <%# end %>
+      : 주가 = <%#= aa %> 원</p>
+      <div class="read-more">
+        <a href="<%= buysell_path(1) %>" class="btn btn-primary"><%= t.name %>팀을 Buy/Sell하러가기!</a>
+      </div>
+    </div>
+  </div>
+</div>

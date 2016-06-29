@@ -7,16 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # team
-Team.create(name: "금융")
-Team.create(name: "컨텐츠")
-Team.create(name: "환경")
-Team.create(name: "사회공헌")
-Team.create(name: "교육")
-Team.create(name: "건강")
-Team.create(name: "라이프스타일")
-Team.create(name: "1인 미디어")
-Team.create(name: "융합")
-Team.create(name: "정보")
+Team.create(name: "금융", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "컨텐츠", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "환경", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "사회공헌", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "교육", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "건강", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "라이프스타일", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "1인 미디어", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "융합", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "정보", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
 
 # user
 User.create(email: "hwshan@snu.ac.kr", univ: "SNU", name: "한원섭", major: "기계항공공학부", password: "12341234", password_confirmation: "12341234", team_id: 3)
