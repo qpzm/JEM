@@ -165,7 +165,7 @@
                             </thead>
                            
                             <tbody>
-                            <% current_user.cards.each do |c| %>
+                            <% current_user.cards.order(:team_id).each do |c| %>
                               <tr>
                                 <td><%= c.team_id %>팀</td>
                                 <td><%= c.team.name %></td>

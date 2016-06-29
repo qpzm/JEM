@@ -1,0 +1,19 @@
+<h4 class="card-title"><b>나의 카드 내역</b><hr></h4>
+<!--Text-->
+<table class="table-info table-hover" style="text-align:center;">
+  <thead class="thead-inverse">
+  <tr>
+     <th>팀</th>
+     <th>주제</th>
+   </tr>
+  </thead>
+  
+  <tbody>
+  <% current_user.cards.order(:team_id).each do |c| %>
+    <tr>
+      <td><%= c.team_id %>팀</td>
+      <td><%= c.team.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
