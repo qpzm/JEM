@@ -1,5 +1,11 @@
 class VoteController < ApplicationController
   def index
+  end
+
+  def result
+    @votedteam = params[:t_id]
+    Team.update(params[:t_id].to_i, fst+1 )
+
     Team.all.each do |t|
       fst = t.first_votes.to_a.count
       snd = t.second_votes.to_a.count
@@ -8,5 +14,6 @@ class VoteController < ApplicationController
     end
 
     @teams = Team.order('poll desc')
+
   end
 end

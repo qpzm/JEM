@@ -1,0 +1,36 @@
+<div class="container">
+  <!--Page heading-->
+   <div class="row">
+       <div class="col-md-12" style="margin-top:20px;">
+           <h2 class="h1-responsive" style="text-align:center;">
+             <strong>득표 결과를 공개하겠습니다!<br></strong>
+               <small class="text-muted" style="text-align:center;">두구두구두구..</small>
+           </h2>
+       </div>
+   </div><hr>
+   <!--/.Page heading-->
+  <table class="table">
+    <thead class="thead-inverse" style="text-align:center;">
+      <tr>
+        <th>팀 번호</th>
+        <th>주제</th>
+        <th>득표수</th>
+        <th>득표율</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @teams.each do |t| %>
+      <tr>
+        <th scope="row"><%= t.id %></th>
+        <td><%= t.name %>
+        <td><%= t.poll %></td>
+        <td><%= t.poll / 4 %>%</td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= @votedteam %>
+
+
+</div>
