@@ -85,7 +85,7 @@ unsorted_2 = (1..10).to_a.sample(10).map{|x| x*18} # 18은 100/5.5 가 18.1818�
     o = Order.create(seller_id: seller_and_buyer.first, buyer_id: seller_and_buyer.last, card_id: unsorted[i-1], price: unsorted_2[(i-1)%10], is_sell: true, is_complete: true)
     Card.update(o.card_id, user_id: seller_and_buyer.first)
   else
-    if [true, false].sample(1) # true 면 sell
+    if [true, false].sample(1)[0] # true 면 sell
       o = Order.create(seller_id: seller_and_buyer.first, buyer_id: nil, card_id: unsorted[i-1], price: unsorted_2[(i-1)%10], is_sell: true)
       Card.update(o.card_id, on_market: true)
     else
@@ -94,3 +94,7 @@ unsorted_2 = (1..10).to_a.sample(10).map{|x| x*18} # 18은 100/5.5 가 18.1818�
     end
   end
 end
+
+Order.create(seller_id: 15, buyer_id: 9, card_id: 100, price: 50, is_sell: true)
+Order.create(seller_id: nil, buyer_id: 15, card_id: 99, price: 60, is_sell: false)
+

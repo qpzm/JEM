@@ -7,7 +7,7 @@ class CreateOrders < ActiveRecord::Migration
 
       t.integer :price, null: false, default: 0
       # is_sell이 true면 판매신청 false면 구매신청
-      t.boolean :is_sell, null: false, default: true
+      t.boolean :is_sell, null: false, default: false
       t.boolean :is_complete, null: false, default: false
 
       t.timestamps null: false

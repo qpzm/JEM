@@ -5,14 +5,16 @@ Rails.application.routes.draw do
   get 'vote/result/:t_id' => 'vote#result#:t_id'
   get 'vote/firstvotecheck/:t_id' => 'vote#firstvotecheck#t_id'
 
+
   get 'mypage/index'
 
   root 'home#index'
+  get 'admin/index', as: :admin
 
   get 'team/index'
   get 'home/index'
   get 'home/test'
-  get 'team/buysell'
+  get 'team/buysell/:t_id' => 'team#buysell', as: :buysell
 
 
   devise_for :users, controllers: {
