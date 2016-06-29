@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
+
   get 'mypage/index'
 
   root 'home#index'
 
+  get 'admin/index', as: :admin
+
   get 'team/index'
   get 'home/index'
   get 'home/test'
-  get 'team/buysell'
+  get 'team/buysell/:team_id' => 'team#buysell', as: :buysell
 
   devise_for :users, controllers: {
     sessions: 'users/sessions'
