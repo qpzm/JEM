@@ -33,6 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.references :team, index: true, foreign_key: true
       t.string :name, null: false, default: ""
       t.string :univ, null: false, default: ""
+      t.string :major, null: false, default: ""
 
       t.timestamps null: false
     end
