@@ -32,7 +32,7 @@
           <tr>
             <td scope="row"><%= o.id %></td>
             <% u = User.find(o.seller_id) %>
-            <td><%= u.name %></td>
+            <td><%= o.seller.name %></td>
             <td><%= o.created_at.to_s(:db) %></td>
             <td><%= o.price %></td>
             <td><button type="button" class="btn btn-success-outline waves-effect">구매 신청하기</button></td>
