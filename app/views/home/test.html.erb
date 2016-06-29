@@ -2,3 +2,13 @@
 <h1><%= @team_1.first_votes.select(:id).inspect %></h1>
 <h1><%= @team_1.second_votes.select(:id).inspect %></h1>
 <h1><%= @team_1.third_votes.select(:id).inspect %></h1>
+
+<h1><% @order.all.each do |o| %></h1>
+  <%= o.seller_id %>
+  <%= o.buyer_id %>
+  <%= o.card_id %>
+  <%= o.price %>
+  <%= o.is_sell %>
+  <%= o.is_complete %>
+  <br>
+<% end %>

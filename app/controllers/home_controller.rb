@@ -4,5 +4,6 @@ class HomeController < ApplicationController
 
   def test
     @team_1 = Team.find(1)
+    @order = Order.all
   end
 end
