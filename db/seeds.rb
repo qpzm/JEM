@@ -60,14 +60,34 @@ User.create(email: "bsh9716@postech.ac.kr", univ: "POSTECH", name: "방상훈", 
 User.create(email: "dlf0325@postech.ac.kr", univ: "POSTECH", name: "황일환", major: "컴퓨터공학과", password: "12341234", password_confirmation: "12341234", team_id: 5)
 User.create(email: "dohyeokkim@postech.ac.kr", univ: "POSTECH", name: "김도혁", major: "컴퓨터공학과", password: "12341234", password_confirmation: "12341234", team_id: 4)
 
+# admin
+User.create(is_admin: true, email: "admin@admin.com", univ: "SNU", name: "어드민", major: "컴퓨터공학과", password: "asdfasdf", password_confirmation: "asdfasdf", team_id: 10, coin: 100000)
+
 # card
 1.upto(40) do |i|
-  1.upto(10) do
-    Card.create(user_id: i, team_id: User.find(i).team_id)
+  1.upto(10) do |j|
+    Card.create(user_id: i, team_id: j)
   end
 end
 
 # vote
 1.upto(40) do |i|
-  Vote.create(user_id: i)
+  Vote.create(user_id: i, team_1_id: i%10+1, team_2_id: (i+4)%10+1, team_3_id: (i+7)%10+1)
+end
+
+# order
+unsorted = (1..10).to_a.sample(10)
+unsorted_2 = (1..10).to_a.sample(10).map{|x| x*18}
+1.upto(10) do |i|
+  seller_and_buyer = (1..40).to_a.sample(2)
+  is_complete = [true, false].sample(1)
+  if is_complete[0] # true 면 끝난 거래
+    Order.create(seller_id: seller_and_buyer.first, buyer_id: seller_and_buyer.last, card_id: unsorted[i-1], price: unsorted_2[i-1], is_sell: true)
+  else
+    if [true, false].sample(1) # true 면 sell
+      Order.create(seller_id: seller_and_buyer.first, buyer_id: nil, card_id: unsorted[i-1], price: unsorted_2[i-1])
+    else
+      Order.create(seller_id: nil, buyer_id: seller_and_buyer.last, card_id: unsorted[i-1], price: unsorted_2[i-1])
+    end
+  end
 end
