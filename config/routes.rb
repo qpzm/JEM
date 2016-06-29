@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'vote/final'
   get 'vote/result'
   get 'vote/result/:t_id' => 'vote#result'
-  get 'vote/firstvotecheck/:t_id' => 'vote#firstvotecheck'
+  get 'vote/firstvotecheck' => 'vote#firstvotecheck'
 
   get 'mypage/index'
 
