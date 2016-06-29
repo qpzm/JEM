@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'team/index'
   get 'home/index'
+  get 'home/test'
   get 'team/buysell'
 
   devise_for :users, controllers: {

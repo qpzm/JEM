@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :replies
 
-  has_many :sell_orders
-  has_many :buy_orders
+  has_many :sell_orders, class_name: :Order, foreign_key: :seller_id
+  has_many :buy_orders, class_name: :Order, foreign_key: :buyer_id
 
   has_one :votes
 end
