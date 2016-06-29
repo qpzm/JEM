@@ -76,18 +76,21 @@ end
 end
 
 # order
-unsorted = (1..10).to_a.sample(10)
-unsorted_2 = (1..10).to_a.sample(10).map{|x| x*18}
-1.upto(10) do |i|
-  seller_and_buyer = (1..40).to_a.sample(2)
+unsorted = (1..100).to_a.sample(100)
+unsorted_2 = (1..10).to_a.sample(10).map{|x| x*18} # 18은 100/5.5 가 18.1818이라서 그럼.
+1.upto(100) do |i|
+  seller_and_buyer = (1..40).to_a.sample(2) # [seller_id, buyer_id]
   is_complete = [true, false].sample(1)
-  if is_complete[0] # true 면 끝난 거래
-    Order.create(seller_id: seller_and_buyer.first, buyer_id: seller_and_buyer.last, card_id: unsorted[i-1], price: unsorted_2[i-1], is_sell: true)
+  if is_complete[0] # true 면 끝난 거래이고, seed 데이터라서 임시로 전부 is_sell: true
+    o = Order.create(seller_id: seller_and_buyer.first, buyer_id: seller_and_buyer.last, card_id: unsorted[i-1], price: unsorted_2[(i-1)%10], is_sell: true, is_complete: true)
+    Card.update(o.card_id, user_id: seller_and_buyer.first)
   else
     if [true, false].sample(1) # true 면 sell
-      Order.create(seller_id: seller_and_buyer.first, buyer_id: nil, card_id: unsorted[i-1], price: unsorted_2[i-1])
+      o = Order.create(seller_id: seller_and_buyer.first, buyer_id: nil, card_id: unsorted[i-1], price: unsorted_2[(i-1)%10], is_sell: true)
+      Card.update(o.card_id, on_market: true)
     else
-      Order.create(seller_id: nil, buyer_id: seller_and_buyer.last, card_id: unsorted[i-1], price: unsorted_2[i-1])
+      o = Order.create(seller_id: nil, buyer_id: seller_and_buyer.last, card_id: unsorted[i-1], price: unsorted_2[(i-1)%10])
+      Card.update(o.card_id, on_market: true)
     end
   end
 end
