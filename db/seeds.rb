@@ -71,9 +71,9 @@ User.create(is_admin: true, email: "admin@admin.com", univ: "SNU", name: "어드
 end
 
 # vote
-1.upto(40) do |i|
-  Vote.create(user_id: i, team_1_id: i%10+1, team_2_id: (i+4)%10+1, team_3_id: (i+7)%10+1)
-end
+#1.upto(40) do |i|
+#  Vote.create(user_id: i, team_1_id: i%10+1, team_2_id: (i+4)%10+1, team_3_id: (i+7)%10+1)
+#end
 
 # order
 unsorted = (1..100).to_a.sample(100)

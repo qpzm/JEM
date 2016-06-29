@@ -3,7 +3,7 @@ class VoteController < ApplicationController
   end
 
   def final
-    total_poll = 10 * (User.count-1)
+    @total_poll = 10 * (User.count-1)
     User.each do |u|
       u.cards.each do |c|
       u.coin += c.team.poll/total_poll
@@ -14,6 +14,7 @@ class VoteController < ApplicationController
 
   def result
     @teams = Team.order('poll desc')
+    @total_poll = 10 * (Vote.count)
   end
 
   def firstvotecheck
@@ -54,7 +55,17 @@ class VoteController < ApplicationController
         redirect_to :back
         return
       end
-    end  
+    end
+    
+    unless Vote.count == 0
+      Vote do |v|
+        if v.user_id == current_user.id
+          redirect_to :back
+          return
+        end
+      end
+   end 
+    
     new_vote=Vote.new
     new_vote.user_id = current_user
     new_vote.team_1_id = params[:vote1]
@@ -63,7 +74,7 @@ class VoteController < ApplicationController
     new_vote.save
     # current_user.vote.team_1_id = params[:t_id]
     # current_user.vote.save
-    for i in 0..2 do
+    for i in 1..3 do
       t = Team.find(params["vote".concat(i.to_s).to_sym].to_i) 
       fst = t.first_votes.to_a.count
       snd = t.second_votes.to_a.count
