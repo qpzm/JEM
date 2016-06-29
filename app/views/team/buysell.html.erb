@@ -31,11 +31,10 @@
         <% @sell_order_for_this_team.each do |o| %>
           <tr>
             <td scope="row"><%= o.id %></td>
-            <% u = User.find(o.seller_id) %>
             <td><%= o.seller.name %></td>
             <td><%= o.created_at.to_s(:db) %></td>
             <td><%= o.price %></td>
-            <td><button type="button" class="btn btn-success-outline waves-effect">구매 신청하기</button></td>
+            <td><button type="button" class="btn btn-success-outline waves-effect">판매 신청하기</button></td>
           </tr>
         <% end %>
       </tbody>
@@ -52,29 +51,21 @@
         <tr>
           <th>#</th>
           <th>이름</th>
-          <th>판매하고자하는 물량</th>
-          <th>판매하려는 개당 가격</th>
+          <th>올린시간</th>
+          <th>가격</th>
+          <th>구매 하기</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>5개</td>
-          <td>2000원</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>8개</td>
-          <td>3000원</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>7개</td>
-          <td>1800원</td>
-        </tr>
+        <% @buy_order_for_this_team.each do |o| %>
+          <tr>
+            <td scope="row"><%= o.id %></td>
+            <td><%= o.buyer.name %></td>
+            <td><%= o.created_at.to_s(:db) %></td>
+            <td><%= o.price %></td>
+            <td><button type="button" class="btn btn-success-outline waves-effect">구매 신청하기</button></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
