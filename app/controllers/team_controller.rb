@@ -15,9 +15,6 @@ class TeamController < ApplicationController
       end
     end
     
-    respond_to do |format|
-      format.js {render :action => 'my_card.js.erb'}
-    end
   end
   
 end
