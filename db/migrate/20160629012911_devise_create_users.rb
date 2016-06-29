@@ -35,6 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :univ, null: false, default: ""
       t.string :major, null: false, default: ""
       t.integer :coin, null: false, default: 1000
+      t.boolean :is_admin, null: false, default: false
 
       t.timestamps null: false
     end

@@ -56,13 +56,16 @@
                     <a class="nav-link <% if params[:controller] == 'vote' %>active<% end %>" href="/vote/index">투표하러 가기!</a>
                     </li>
                     <li class="nav-item right">
-                    <% if current_user.name.nil?%>
+                    <% if current_user.name.nil? %>
                       <a class="nav-link nav_name"> NAME? </a>
                     <% else %>
                       <a class="nav-link nav_name" > <%= current_user.name%></a>
                     <% end %>
                     </li>
                     <li class="nav-item right">
+                    <% if current_user.is_admin %>
+                      <a class="nav-link nav_name" href="<%= admin_path %>">어드민</a>
+                    <% end %>
                     <%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE', class:"nav-link", style: "font-weight:bold; color:white;"  %>
                     </li>
                   <% else %>
