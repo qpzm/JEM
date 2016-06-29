@@ -37,9 +37,26 @@
                   <li class="nav-item <% if params[:controller] == 'team' %>active<% end %>">
                       <a class="nav-link" href="/team/index">Team</a>
                   </li>
-                  <li class="nav-item <% if params[:controller] == 'mypage' %>active<% end %>">
-                      <a class="nav-link" href="/mypage/index">My page</a>
-                  </li>
+                  <% if user_signed_in? %>
+                    <li class="nav-item">
+                    <a class="nav-link <% if params[:controller] == 'mypage' %>active<% end %>" href="/mypage/index">My Page</a>
+                    </li>
+                    <li class="nav-item right">
+                    <% if current_user.name.nil?%>
+                      <a class="nav-link nav_name"> NAME? </a>
+                    <% else %>
+                      <a class="nav-link nav_name" > <%= current_user.name%></a>
+                    <% end %>
+                    </li>
+                    <li class="nav-item right">
+                    <%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE', class:"nav-link", style: "font-weight:bold; color:white;"  %>
+                    </li>
+                  <% else %>
+                    <li class="nav-item right"style="margin-left:35vw;">
+                    <%= link_to '로그인하기', new_user_session_path, class: "nav-link", style: "float:right; font-weight:bold; color:white;"  %>
+                    </li>
+                  <% end %>
+
               </ul>
           </div>
           <!--/.Collapse content-->
