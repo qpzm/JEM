@@ -32,27 +32,21 @@ class VoteController < ApplicationController
       end
     end
 
-    unless Vote.count == 0
-      for v in 1..40 do
-        if Vote.find(v).user_id == current_user.id
+    unless current_user.vote.nil?
+      if current_user.vote.is_complete
         redirect_to :back
         return
-        end
       end
-      # Vote do |v|
-      #   if v.user_id == current_user.id
-      #     redirect_to :back
-      #     return
-      #   end
-      # end
-   end
+    end
 
     new_vote=Vote.new
     new_vote.user_id = current_user.id
     new_vote.team_1_id = params[:vote1]
     new_vote.team_2_id = params[:vote2]
     new_vote.team_3_id = params[:vote3]
+    new_vote.is_complete = true
     new_vote.save
+
     # current_user.vote.team_1_id = params[:t_id]
     # current_user.vote.save
     for i in 1..3 do
