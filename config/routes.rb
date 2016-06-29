@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'team/index'
   get 'home/index'
   get 'home/test'
-  get 'team/buysell'
+  get 'team/buysell/:t_id' => 'team#buysell', as: :buysell
 
 
   devise_for :users, controllers: {
