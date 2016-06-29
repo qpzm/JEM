@@ -2,7 +2,6 @@
   <div class="row">
     <!--img style="margin-top:1px; width=100%;" align="middle" src="http://iacs-courses.seas.harvard.edu/courses/iacs_projects/www.equityforecast.com/images/stockmarket.jpg"/--><br><br>
     <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">판매 신청하기</button>
     <p>
     판매 신청하고자하는 팀 : <input type="text" name="teamname" style="font-weight:bold;" value="<%#= current_user.name %>금융" readonly/><br>
     판매하고자 하는 상품 1개당 가격 : <input type="text" name="selleachprice" required/>
@@ -14,7 +13,7 @@
   <div class="col-md-6" style="text-align:center;">
     <h2>
       <strong>Buy side <br>
-        <h3>현재 나온 이 팀의 상품을 사고싶다면!</h3>
+        <h3>이 팀의 상품을 팔고싶다면!</h3>
       </strong>
     </h2>
     <table class="table-info table-hover" style="text-align:center;">
@@ -28,18 +27,21 @@
         </tr>
       </thead>
       <tbody>
-        <% @sell_order_for_this_team.each do |o| %>
-          <tr>
-            <td scope="row"><%= o.id %></td>
-            <td><%= o.seller.name %></td>
-            <td><%= o.created_at.to_s(:db) %></td>
-            <td><%= o.price %></td>
-            <td><button type="button" class="btn btn-success-outline waves-effect">판매 신청하기</button></td>
-          </tr>
+        <% if @sell_order_for_this_team != [] %>
+          <% @sell_order_for_this_team.each do |o| %>
+            <tr>
+              <td scope="row"><%= o.id %></td>
+              <td><%= o.seller.name %></td>
+              <td><%= o.created_at.to_s(:db) %></td>
+              <td><%= o.price %></td>
+              <td><button type="button" class="btn btn-success-outline waves-effect">판매 신청하기</button></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
   </div>
+
   <div class="col-md-6" style="text-align:center;">
     <h2>
       <strong>Sell side <br>
@@ -57,17 +59,20 @@
         </tr>
       </thead>
       <tbody>
-        <% @buy_order_for_this_team.each do |o| %>
-          <tr>
-            <td scope="row"><%= o.id %></td>
-            <td><%= o.buyer.name %></td>
-            <td><%= o.created_at.to_s(:db) %></td>
-            <td><%= o.price %></td>
-            <td><button type="button" class="btn btn-success-outline waves-effect">구매 신청하기</button></td>
-          </tr>
+        <% if @sell_order_for_this_team != [] %>
+          <% @buy_order_for_this_team.each do |o| %>
+            <tr>
+              <td scope="row"><%= o.id %></td>
+              <td><%= o.buyer.name %></td>
+              <td><%= o.created_at.to_s(:db) %></td>
+              <td><%= o.price %></td>
+              <td><button type="button" class="btn btn-success-outline waves-effect">구매 신청하기</button></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
+    <%= render partial: "my_card" %>
   </div>
 
 </div>

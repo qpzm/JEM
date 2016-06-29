@@ -1,0 +1,38 @@
+<div class="container">
+  <!--Page heading-->
+   <div class="row">
+       <div class="col-md-12" style="margin-top:20px;">
+           <h2 class="h1-responsive" style="text-align:center;">
+             <strong>JEM 시장에서 활동하신 여러분, 수고많으셨습니다!</strong><br>
+               <small class="text-muted" style="text-align:center;">06.30 JEM시장 "오늘의 노스트라다무스"를 공개하겠습니다!</small><br>
+               <button class="btn btn-lg btn-success" style="text-align:center;" data-toggle="collapse" data-target="#voteresult"><b>결과보러가기!</b></button>
+           </h2>
+       </div>
+   </div><hr>
+     <!--/.Page heading-->
+     <!--/.Page heading-->
+    <div class="row">
+     <div class="col-md-12" style="margin-top:20px;">
+      <table class="table collapse" id="voteresult">
+        <thead class="thead-inverse" style="text-align:center;">
+          <tr>
+            <th>순위</th>
+            <th>이메일</th>
+            <th>총 얻은 금액</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @teams.each do |t| %>
+          <tr>
+            <th scope="row"><%= t.id %></th>
+            <td><%= t.name %>
+            <td><%= t.poll %></td>
+            <td><%= t.poll / 4 %>%</td>
+            <td><%= t.poll * 2.5 %>원</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
