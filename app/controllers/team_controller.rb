@@ -68,4 +68,13 @@ class TeamController < ApplicationController
       redirect_to "/team/buysell/#{t_id}"
     end
   end
+  
+  def create_buy
+    Order.create(seller_id: nil, buyer_id: current_user.id, card_id: nil, buy_team_id: , price: , is_sell: false)
+  end
+  
+  def create_sell
+    Order.create(seller_id: current_user.id, buyer_id: nil, card_id:  , buy_team_id: , price: , is_sell: true)
+    
+    
 end

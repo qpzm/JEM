@@ -67,11 +67,13 @@
                            
                             <tbody>
                             <% current_user.buy_orders.each do |b| %>
+                              <% if b.is_complete %>
                               <tr>
                                 <td><%= b.card.team_id %>팀</td>
                                 <td><%= b.card.team.name %></td>
                                 <td><%= b.price %>원</td>
                               </tr>
+                              <% end %>
                             <% end %>
                            </tbody>
                          </table>
@@ -154,7 +156,7 @@
                      <!--Card content-->
                      <div class="card-block">
                          <!--Title-->
-                         <h4 class="card-title"><b>나의 카드 내역</b><hr></h4>
+                         <h4 class="card-title"><b>나의 카드 보유내역</b><hr></h4>
                          <!--Text-->
                          <table class="table-info table-hover" style="text-align:center;">
                            <thead class="thead-inverse">
