@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'mypage/index'
 
   root 'home#index'
+  get 'admin/index', as: :admin
 
   get 'team/index'
   get 'home/index'
