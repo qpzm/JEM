@@ -24,7 +24,7 @@ class TeamController < ApplicationController
     u = o.seller
     flash[:success_notice] = "님아 돈이 없거나 님이 올린거 샀음"
 
-    if (current_user.coin < o.price) or (current_user.id != u.id)
+    if (current_user.coin < o.price) or (current_user.id == u.id)
       puts "zxcvzxcv"
       redirect_to "/team/buysell/#{t_id}"
     else
@@ -48,7 +48,7 @@ class TeamController < ApplicationController
     u = o.buyer
     flash[:success_notice] = "님아 이 팀에 대한 카드가 님한테 하나도 없거나 님이 올린거 팔았음"
 
-    if c.nil? or (current_user.id != u.id)
+    if c.nil? or (current_user.id == u.id)
       puts "zxcvzxcv"
       redirect_to "/team/buysell/#{t_id}"
     else
