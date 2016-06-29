@@ -1,5 +1,6 @@
 class TeamController < ApplicationController
   def index
+  
   end
 
   def buysell
@@ -13,5 +14,10 @@ class TeamController < ApplicationController
         @buy_order_for_this_team.push(o)
       end
     end
+    
+    respond_to do |format|
+      format.js {render :action => 'my_card.js.erb'}
+    end
   end
+  
 end

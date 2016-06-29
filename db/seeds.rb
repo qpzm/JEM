@@ -91,3 +91,7 @@ unsorted_2 = (1..10).to_a.sample(10).map{|x| x*18}
     end
   end
 end
+
+Order.create(seller_id: 15, buyer_id: 9, card_id: 100, price: 50, is_sell: true)
+Order.create(seller_id: nil, buyer_id: 15, card_id: 99, price: 60, is_sell: false)
+
