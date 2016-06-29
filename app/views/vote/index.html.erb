@@ -5,6 +5,7 @@
            <h2 class="h1-responsive" style="text-align:center;">
              <strong>이 서비스들이 세상에 나온다면..<br> 사람들이 가장 유용하게 사용하는 서비스는 무엇이 될까요?<br></strong>
              <small class="text-muted" style="text-align:center;">당신의 선택이 중요합니다!<br><h4>(팀 번호만 적어주세요!)</h4></small><hr>
+            <form action="/vote/firstvotecheck/">
                 <div class="col-md-3">
                   <input type="text" name="vote1" style="text-align:center;"/>
                   <label for="team_number">1순위 팀을 골라주세요!</label>
@@ -18,6 +19,7 @@
                   <label for="team_number">3순위 팀을 골라주세요!</label>
                 </div>
                 <div class="col-md-3">
+<<<<<<< HEAD
                   <form action="/vote/firstvotecheck">
                   <input type="hidden" id="vote1" name="vote1" value=""></input>
                   <input type="hidden" id="vote2" name="vote2" value=""></input>
@@ -25,7 +27,11 @@
                    <button type="submit" class="btn btn-success" name="votedteam">투표할래요!</button>
                    </form>
                   <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">모두 결정했어요!</button> -->
+=======
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">모두 결정했어요!</button>
+>>>>>>> adfce2c62dc808d5d7bce6a0f94ed868c022a1ca
                 </div>
+           </form>
            </h2>
        </div>
    </div>
@@ -76,11 +82,11 @@
                  <div class="modal-body">
                    <h4><b>여러분의 한 표 한 표가 소중한 결과를 만들어냅니다^^</b></h4>
                  </div>
+<<<<<<< HEAD
                  <form action="/vote/firstvotecheck">
+=======
+>>>>>>> adfce2c62dc808d5d7bce6a0f94ed868c022a1ca
                    <div class="modal-footer">
-                     <input type="hidden" id="vote1" name="vote1" value=""></input>
-                     <input type="hidden" id="vote2" name="vote2" value=""></input>
-                     <input type="hidden" id="vote3" name="vote3" value=""></input>
                      <button type="submit" class="btn btn-success" name="votedteam" value="<% t.id %>">투표할래요!</button>
                      <button type="button" class="btn btn-warning" data-dismiss="modal">다시 생각해볼래요!</button>
                    </div>
