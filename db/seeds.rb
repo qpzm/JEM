@@ -7,16 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # team
-Team.create(name: "금융", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
-Team.create(name: "컨텐츠", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
-Team.create(name: "환경", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
-Team.create(name: "사회공헌", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
-Team.create(name: "교육", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
-Team.create(name: "건강", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
-Team.create(name: "라이프스타일", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
-Team.create(name: "1인 미디어", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
-Team.create(name: "융합", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
-Team.create(name: "정보", information: "저희는 바람직한 내일을 위합니다", image_url: "assets/mainimg.jpg")
+Team.create(name: "금융", information: "N빵", image_url: "assets/mainimg.jpg")
+Team.create(name: "컨텐츠", information: "HIPZEAL", image_url: "assets/mainimg.jpg")
+Team.create(name: "환경", information: "쓰레기가 보물로 변신하는 업사이클링", image_url: "assets/mainimg.jpg")
+Team.create(name: "사회공헌", information: "노쇼방지 예약서비스", image_url: "assets/mainimg.jpg")
+Team.create(name: "교육", information: "토닥토닥 달콤 힐링노트", image_url: "assets/mainimg.jpg")
+Team.create(name: "건강", information: "여행 중 믿을 수 있는 동행 서비스", image_url: "assets/mainimg.jpg")
+Team.create(name: "라이프스타일", information: "나의 예술혼을 찾아서", image_url: "assets/mainimg.jpg")
+Team.create(name: "1인 미디어", information: "여행갔을 때 인원파악용 팔찌", image_url: "assets/mainimg.jpg")
+Team.create(name: "융합", information: "인명피해예방 산업용 드론", image_url: "assets/mainimg.jpg")
+Team.create(name: "정보", information: "예측시장 JEM", image_url: "assets/mainimg.jpg")
 
 # user
 User.create(email: "hwshan@snu.ac.kr", univ: "SNU", name: "한원섭", major: "기계항공공학부", password: "12341234", password_confirmation: "12341234", team_id: 3)
@@ -62,6 +62,9 @@ User.create(email: "dohyeokkim@postech.ac.kr", univ: "POSTECH", name: "김도혁
 
 # admin
 User.create(is_admin: true, email: "admin@admin.com", univ: "SNU", name: "어드민", major: "컴퓨터공학과", password: "asdfasdf", password_confirmation: "asdfasdf", team_id: 10, coin: 100000)
+User.create(email: "jury1@jury.com", univ: "SNU", name: "심사1", major: "컴퓨터공학과", password: "12341234", password_confirmation: "12341234", team_id: 10, coin: 1000)
+User.create(email: "jury2@jury.com", univ: "SNU", name: "심사2", major: "컴퓨터공학과", password: "12341234", password_confirmation: "12341234", team_id: 10, coin: 1000)
+User.create(email: "jury3@jury.com", univ: "SNU", name: "심사3", major: "컴퓨터공학과", password: "12341234", password_confirmation: "12341234", team_id: 10, coin: 1000)
 
 # card
 1.upto(40) do |i|

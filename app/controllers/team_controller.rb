@@ -68,7 +68,7 @@ class TeamController < ApplicationController
   end
 
   def create_sell
-    c = current_user.cards.where(team_id: params[:team_id]).first
+    c = current_user.cards.where(team_id: params[:team_id], on_market: false).first
     flash[:success_notice] = "해당하는 카드가 없거나 잘못된 입력입니다."
 
     if c.nil? or (params[:sell_price].to_i.to_s != params[:sell_price])
