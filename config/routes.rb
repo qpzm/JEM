@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'admin/index', as: :admin
   post 'team/buy'
   post 'team/sell'
+  post 'team/create_buy'
+  post 'team/create_sell'
 
   get 'team/index'
   get 'home/index'

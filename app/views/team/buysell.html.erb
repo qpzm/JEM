@@ -1,30 +1,28 @@
 <div class="container">
   <div class="row">
     <%# if flash[:fail_notice] %>
-      <div class="notice" style="text-align: center; background-color: #7699D1; color: red; margin-bottom: 50px;"><h1><%# flash[:fail_notice] %></h1></div>
+    <div class="notice" style="text-align: center; background-color: #7699D1; color: red; margin-bottom: 50px;"><h1><%# flash[:fail_notice] %></h1></div>
     <%# end %>
     <% if flash[:success_notice] %>
       <div class="notice" style="text-align: center; background-color: #7699D1; color: red; margin-bottom: 50px;"><h1><%= flash[:success_notice] %></h1></div>
     <% end %>
     <div class="col-md-6">
       <!--img style="margin-top:1px; width=100%;" align="middle" src="http://iacs-courses.seas.harvard.edu/courses/iacs_projects/www.equityforecast.com/images/stockmarket.jpg"/--><br><br>
-      <!-- Trigger the modal with a button -->
-      <p>
-      판매 신청하고자하는 팀 : <input type="text" name="teamname" style="font-weight:bold;" value="<%#= current_user.name %>금융" readonly/><br>
-      판매하고자 하는 상품 1개당 가격 : <input type="text" name="selleachprice" required/>
-      판매 신청하려는 상품의 갯수 : <input type="text" name="selleach" required/>
-      <button type="submit" id="input-submit" class="btn btn-secondary" style="height:7vw; font-size:3vw;"><i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;<b>판매 신청하기</b></button>
-      </p>
+      <form action="/team/create_sell" method="POST">
+        <!-- Trigger the modal with a button -->
+        <input type="hidden" name="team_id" value="<%= params[:t_id] %>"></input><br>
+        판매하고자 하는 카드 가격 : <input type="text" name="sell_price"></input>
+        <button type="submit" id="input-submit" class="btn btn-secondary" style="height:7vw; font-size:3vw;"><i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;<b>판매 신청하기</b></button>
+      </form>
     </div>
     <div class="col-md-6">
       <!--img style="margin-top:1px; width=100%;" align="middle" src="http://iacs-courses.seas.harvard.edu/courses/iacs_projects/www.equityforecast.com/images/stockmarket.jpg"/--><br><br>
-      <!-- Trigger the modal with a button -->
-      <p>
-      내가 사고싶은 팀 카드 : <input type="text" name="teamname" style="font-weight:bold;" value="<%#= current_user.name %>금융" readonly/><br>
-      사고싶은 카드 1개당 가격 : <input type="text" name="selleachprice" required/>
-      구매하고싶은 카드의 갯수 : <input type="text" name="selleach" required/>
-      <button type="submit" id="input-submit" class="btn btn-primary" style="height:7vw; font-size:3vw;"><i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;<b>구매 신청하기</b></button>
-      </p>
+      <form action="/team/create_buy" method="POST">
+        <!-- Trigger the modal with a button -->
+        <input type="hidden" name="team_id" value="<%= params[:t_id] %>"></input><br>
+        사고싶은 카드 가격 : <input type="text" name="buy_price"></input>
+        <button type="submit" id="input-submit" class="btn btn-primary" style="height:7vw; font-size:3vw;"><i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;<b>구매 신청하기</b></button>
+      </form>
     </div>
   </div>
   <%= render partial: "my_card" %>
