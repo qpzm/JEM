@@ -45,7 +45,7 @@ class TeamController < ApplicationController
 
   def sell
     t_id = params[:t_id]
-    c = current_user.cards.where(team_id: t_id).first
+    c = current_user.cards.where(team_id: t_id, on_market: false).first
     o = Order.find(params[:order_id].to_i)
     u = o.buyer
     flash[:success_notice] = "이 팀의 카드가 하나도 없거나 본인에게 카드를 팔았음"
