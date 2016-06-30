@@ -6,6 +6,10 @@
     <% if flash[:success_notice] %>
       <div class="notice" style="text-align: center; background-color: #7699D1; color: red; margin-bottom: 50px;"><h1><%= flash[:success_notice] %></h1></div>
     <% end %>
+    
+    <h4 style="font-weight:bold; text-align:center;"> 1등, 2등, 3등에 중복투표를 할 수 없으므로, 한 팀이 가져갈 수 있는 최대 득표율은 50% = 5000원입니다!<br>
+        매물을 등록하실때 참고해서 올려주세요!<hr>개발상의 이슈로 인해 이 페이지에 들어오신 이후 "새로고침"을 한번더 해주셔야 거래가 가능합니다ㅠㅠ 빨리 고치겠습니다!</h4>
+        
     <div class="col-md-6">
       <!--img style="margin-top:1px; width=100%;" align="middle" src="http://iacs-courses.seas.harvard.edu/courses/iacs_projects/www.equityforecast.com/images/stockmarket.jpg"/--><br><br>
       <form action="/team/create_sell" method="POST">
@@ -56,7 +60,7 @@
                 <td><%= o.card.team_id %></td>
                 <td><%= o.created_at.to_s(:db).split(' ')[1] %></td>
                 <td><%= o.price %></td>
-                <td><input type="hidden" name="t_id" value="<%= params[:t_id] %>"><input type="hidden" name="order_id" value="<%= o.id %>"><input type="hidden" name="seller_id" value="<%= o.seller_id %>"></input><button type="submit" class="btn btn-success-outline waves-effect">구매하기</button></td>
+                <td><input type="hidden" name="t_id" value="<%= @team_id %>"><input type="hidden" name="order_id" value="<%= o.id %>"><input type="hidden" name="seller_id" value="<%= o.seller_id %>"></input><button type="submit" class="btn btn-success-outline waves-effect">구매하기</button></td>
               </tr>
             </form>
           <% end %>
@@ -84,21 +88,8 @@
         </tr>
       </thead>
       <tbody>
-        <% if @buy_order_for_this_team != [] %>
-          <% @buy_order_for_this_team.each do |o| %>
-            <form action="/team/sell" method="POST">
-              <tr>
-                <td><%= o.buyer.name %></td>
-                <td><%= o.buy_team_id %></td>
-                <td><%= o.created_at.to_s(:db).split(' ')[1] %></td>
-                <td><%= o.price %></td>
-                <td><input type="hidden" name="t_id" value="<%= params[:t_id] %>"><input type="hidden" name="order_id" value="<%= o.id %>"><input type="hidden" name="buyer_id" value="<%= o.buyer_id %>"></input><button type="submit" class="btn btn-success-outline waves-effect">판매하기</button></td>
-              </tr>
-            </form>
-          <% end %>
-        <% else %>
-          <td>상품이</td><td> 없습니다.</td><td></td><td></td>
-        <% end %>
+        <%= render partial: "buyer_list" %>
+       
       </tbody>
     </table>
   </div>

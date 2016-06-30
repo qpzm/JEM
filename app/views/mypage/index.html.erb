@@ -118,6 +118,7 @@
                            
                             <tbody>
                             <% current_user.sell_orders.each do |s| %>
+                            <% unless s.card.nil? %>
                               <tr>
                                 <td><%= s.card.team_id %>팀</td>
                                 <td><%= s.card.team.name %></td>
@@ -128,6 +129,7 @@
                                     <td></td>
                                   <% end %>                                
                               </tr>
+                            <% end %>
                             <% end %>
                            </tbody>
                          </table>

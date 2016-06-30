@@ -1,9 +1,10 @@
 class VoteController < ApplicationController
+  before_action :require_admin, only: [:final]
   def index
   end
 
   def final
-    @total_poll = 10 * (User.count-1)
+    @total_poll = 10 * (Vote.count)
     # User.each do |u|
     #   u.cards.each do |c|
     #   u.coin += c.team.poll/total_poll
@@ -64,4 +65,17 @@ class VoteController < ApplicationController
     end
     redirect_to "/vote/result"
   end
+ 
+   def require_admin
+    if user_signed_in? == false
+      flash[:error] = "관리자 권한이 필요합니다."
+      redirect_to "/notice/index"
+    elsif
+      unless current_user.is_admin?
+        flash[:error] = "관리자 권한이 필요합니다."
+        redirect_to "/notice/index"
+      end
+    end
+   end
+ 
 end

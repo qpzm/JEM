@@ -16,22 +16,18 @@
       <table class="table collapse" id="voteresult">
         <thead class="thead-inverse" style="text-align:center;">
           <tr>
-            <th>순위</th>
+            <th>등록 번호</th>
             <th>이메일</th>
             <th>총 얻은 금액</th>
           </tr>
         </thead>
         <tbody>
             <% for v in User.order("coin desc") %>
-              <% i=1 %>
-                <% while i<42 %>
               <tr>
-                <td><%= i %></td>
+                <td><%= v.id %></td>
                 <td><%= v.name %></td>
                 <td><%= v.coin %>원</td>
               </tr>
-               <% end %>
-             <% i=i+1 %>
             <% end %>
         </tbody>
       </table>

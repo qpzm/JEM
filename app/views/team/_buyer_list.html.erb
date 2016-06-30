@@ -1,0 +1,15 @@
+     <% if @buy_order_for_this_team != [] %>
+      <% @buy_order_for_this_team.each do |o| %>
+        <form action="/team/sell" method="POST">
+          <tr>
+            <td><%= o.buyer.name %></td>
+            <td><%= o.buy_team_id %></td>
+            <td><%= o.created_at.to_s(:db).split(' ')[1] %></td>
+            <td><%= o.price %></td>
+            <td><input type="hidden" name="t_id" value="<%= o.buy_team_id %>"><input type="hidden" name="order_id" value="<%= o.id %>"><input type="hidden" name="buyer_id" value="<%= o.buyer_id %>"></input><button type="submit" class="btn btn-success-outline waves-effect">판매하기</button></td>
+          </tr>
+        </form>
+      <% end %>
+    <% else %>
+      <td>상품이</td><td> 없습니다.</td><td></td><td></td>
+    <% end %>
