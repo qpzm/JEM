@@ -1,13 +1,8 @@
 ##예측시장 
  
 
-rake db:migrate 
-  
-rake db:seed  
-  
-rake db:drop  
-  
-rails g controller contr_name action1_name action2_name  
+커맨드라인에 rake db:migrate; rake db:seed 를 입력하시고 서버를 켜서 웹페이지를 사용해보시기 바랍니다.
+ 
+이 웹페이지의 2016 07 03 현재 버전은 POKAS 해커톤캠프만을 위한 내용만 들어있으며 앞으로 계속해서 개선될 예정입니다.
 
-rails g model table_name column1_name:string column2_name:string
-
+10개의 팀에 대해 카드를 사고 팔 수 있으며 투표가 완료되면 당시에 가지고 있는 카드들에 대해 득표율에 비례한 만큼의 코인이 환급됩니다.
