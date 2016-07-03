@@ -74,53 +74,53 @@ User.create(email: "jury3@jury.com", univ: "SNU", name: "심사3", major: "컴�
 end
 
 # vote
-#1.upto(40) do |i|
-#  Vote.create(user_id: i, team_1_id: i%10+1, team_2_id: (i+4)%10+1, team_3_id: (i+7)%10+1)
-#end
+1.upto(40) do |i|
+  Vote.create(user_id: i, team_1_id: i%10+1, team_2_id: (i+4)%10+1, team_3_id: (i+7)%10+1)
+end
 
-# # order
-# unsorted = (1..50).to_a.sample(100)
-# unsorted_2 = (1..10).to_a.sample(10).map{|x| x*18} # 18은 100/5.5 가 18.1818이라서 그럼.
-# 1.upto(50) do |i|
-#   seller_and_buyer = (1..40).to_a.sample(2) # [seller_id, buyer_id]
-#   seller_id = seller_and_buyer.first
-#   buyer_id = seller_and_buyer.last
-#   is_complete = [true, false].sample(1)
-#   if is_complete[0] # true 면 끝난 거래이고, seed 데이터라서 임시로 전부 is_sell: true, buy_team_id: nil
-#     c_index = rand(User.find(seller_id).cards.count)
-#     c_id = User.find(seller_id).cards[c_index].id
-#     Order.create(seller_id: seller_id, buyer_id: buyer_id, card_id: c_id, price: unsorted_2[(i-1)%10], is_sell: true, is_complete: true)
-#     Card.update(c_id, user_id: buyer_id)
-#   else
-#     if [true, false].sample(1)[0] # true 면 sell 이고 is_sell: true, buy_team_id: nil
-#       c_index = rand(User.find(seller_id).cards.count)
-#       c_id = User.find(seller_id).cards[c_index].id
-#       Order.create(seller_id: seller_id, buyer_id: nil, card_id: c_id, price: unsorted_2[(i-1)%10], is_sell: true)
-#       Card.update(c_id, on_market: true)
-#     else # false 여서 buy 이고 is_sell: false, buy_team_id: integer 
-#       o = Order.create(seller_id: nil, buyer_id: buyer_id, card_id: nil, buy_team_id: (1..10).to_a.sample(1)[0], price: unsorted_2[(i-1)%10])
-#     end
-#   end
-# end
+# order
+unsorted = (1..50).to_a.sample(100)
+unsorted_2 = (1..10).to_a.sample(10).map{|x| x*18} # 18은 100/5.5 가 18.1818이라서 그럼.
+1.upto(50) do |i|
+  seller_and_buyer = (1..40).to_a.sample(2) # [seller_id, buyer_id]
+  seller_id = seller_and_buyer.first
+  buyer_id = seller_and_buyer.last
+  is_complete = [true, false].sample(1)
+  if is_complete[0] # true 면 끝난 거래이고, seed 데이터라서 임시로 전부 is_sell: true, buy_team_id: nil
+    c_index = rand(User.find(seller_id).cards.count)
+    c_id = User.find(seller_id).cards[c_index].id
+    Order.create(seller_id: seller_id, buyer_id: buyer_id, card_id: c_id, price: unsorted_2[(i-1)%10], is_sell: true, is_complete: true)
+    Card.update(c_id, user_id: buyer_id)
+  else
+    if [true, false].sample(1)[0] # true 면 sell 이고 is_sell: true, buy_team_id: nil
+      c_index = rand(User.find(seller_id).cards.count)
+      c_id = User.find(seller_id).cards[c_index].id
+      Order.create(seller_id: seller_id, buyer_id: nil, card_id: c_id, price: unsorted_2[(i-1)%10], is_sell: true)
+      Card.update(c_id, on_market: true)
+    else # false 여서 buy 이고 is_sell: false, buy_team_id: integer 
+      o = Order.create(seller_id: nil, buyer_id: buyer_id, card_id: nil, buy_team_id: (1..10).to_a.sample(1)[0], price: unsorted_2[(i-1)%10])
+    end
+  end
+end
 
-# # buy order
-# Order.create(seller_id: nil, buyer_id: 9, card_id: nil, buy_team_id: 10, price: 100)
-# Order.create(seller_id: nil, buyer_id: 9, card_id: nil, buy_team_id: 10, price: 100)
-# Order.create(seller_id: nil, buyer_id: 9, card_id: nil, buy_team_id: 10, price: 100)
-# Order.create(seller_id: nil, buyer_id: 9, card_id: nil, buy_team_id: 10, price: 100)
-# Order.create(seller_id: nil, buyer_id: 9, card_id: nil, buy_team_id: 10, price: 100)
-# Order.create(seller_id: nil, buyer_id: 9, card_id: nil, buy_team_id: 10, price: 100)
+# for buy order
+Order.create(seller_id: nil, buyer_id: 9, card_id: nil, buy_team_id: 10, price: 100)
+Order.create(seller_id: nil, buyer_id: 9, card_id: nil, buy_team_id: 10, price: 100)
+Order.create(seller_id: nil, buyer_id: 9, card_id: nil, buy_team_id: 10, price: 100)
+Order.create(seller_id: nil, buyer_id: 9, card_id: nil, buy_team_id: 10, price: 100)
+Order.create(seller_id: nil, buyer_id: 9, card_id: nil, buy_team_id: 10, price: 100)
+Order.create(seller_id: nil, buyer_id: 9, card_id: nil, buy_team_id: 10, price: 100)
 
-# # for sell order
-# Card.create(user_id: 1, team_id: 10)
-# Card.create(user_id: 1, team_id: 10)
-# Card.create(user_id: 1, team_id: 10)
-# Card.create(user_id: 1, team_id: 10)
-# Card.create(user_id: 1, team_id: 10)
-# Card.create(user_id: 1, team_id: 10)
-# Order.create(seller_id: 1, buyer_id: nil, card_id: 401, price: 100, is_sell: true)
-# Order.create(seller_id: 1, buyer_id: nil, card_id: 402, price: 100, is_sell: true)
-# Order.create(seller_id: 1, buyer_id: nil, card_id: 403, price: 100, is_sell: true)
-# Order.create(seller_id: 1, buyer_id: nil, card_id: 404, price: 100, is_sell: true)
-# Order.create(seller_id: 1, buyer_id: nil, card_id: 405, price: 100, is_sell: true)
-# Order.create(seller_id: 1, buyer_id: nil, card_id: 406, price: 100, is_sell: true)
+# for sell order
+Card.create(user_id: 1, team_id: 10)
+Card.create(user_id: 1, team_id: 10)
+Card.create(user_id: 1, team_id: 10)
+Card.create(user_id: 1, team_id: 10)
+Card.create(user_id: 1, team_id: 10)
+Card.create(user_id: 1, team_id: 10)
+Order.create(seller_id: 1, buyer_id: nil, card_id: 401, price: 100, is_sell: true)
+Order.create(seller_id: 1, buyer_id: nil, card_id: 402, price: 100, is_sell: true)
+Order.create(seller_id: 1, buyer_id: nil, card_id: 403, price: 100, is_sell: true)
+Order.create(seller_id: 1, buyer_id: nil, card_id: 404, price: 100, is_sell: true)
+Order.create(seller_id: 1, buyer_id: nil, card_id: 405, price: 100, is_sell: true)
+Order.create(seller_id: 1, buyer_id: nil, card_id: 406, price: 100, is_sell: true)
