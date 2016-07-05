@@ -33,11 +33,70 @@
           </tr>
           <% end %>
         </tbody>
+        </table>
+      <table>
+        <thead class="thead-inverse" style="text-align:center;">
+          <tr>
+            <th>유저id</th>
+            <th>유저이름</th>
+            <th>팀1</th>
+            <th>팀2</th>
+            <th>팀3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @votes.each do |v| %>
+          <tr>
+            <th scope="row"><%= v.user_id %></th>
+            <td><%= v.user.name %>
+            <td><%= v.team_1.name %></td>
+            <td><%= v.team_2.name %></td>
+            <td><%= v.team_3.name %></td>
+          </tr>
+          <% end %>
+        </tbody>
       </table>
+      
+      <table>
+        <thead class="thead-inverse" style="text-align:center;">
+          <tr>
+            <th>Order_id</th>
+            <th>Team_id</th>
+            <th>Buyer</th>
+            <th>Seller</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |o| %>
+          <tr>
+            <th scope="row"><%= o.id %></th>
+            <% unless o.buy_team.nil? %>
+              <td><%= o.buy_team.name %></td>
+            <% else %>
+              <td>nil</td>
+            <% end %>
+            <% unless o.buyer.nil? %>
+              <td><%= o.buyer.name %></td>
+            <% else %>
+              <td>nil</td>
+            <% end %>
+            <% unless o.seller.nil? %>
+              <td><%= o.seller.name %></td>
+            <% else %>
+              <td>nil</td>
+            <% end %>
+            <td><%= o.price %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+
       <hr>
       <!--<form action="/vote/final">
         <button class="btn btn-lg btn-primary" style="text-align:center;" id="voteresult">JEM 시장의 막이 내렸습니다!</button>
-      </form>-->
     </div>
+      </form>-->
   </div>
 </div>
