@@ -22,8 +22,8 @@ class VoteController < ApplicationController
   def result
     @teams = Team.order('poll desc')
     @total_poll = 10 * (Vote.count)
-    @votes = Vote.order('user_id desc')
     @orders = Order.order('id asc')
+    @votes = Vote.order('user_id desc')
   end
 
   def firstvotecheck
